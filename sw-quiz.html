@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+ <head>
+  <meta charset="UTF-8">
+  <title>title</title>
+  <script src="http://code.jquery.com/jquery.min.js"></script>
+  <link rel="stylesheet" href="http://josephwood.net/projects/listy/css/normalize.css" type="text/css">
+  <link rel="stylesheet" href="css/style.css" type="text/css">
+  <script type="text/javascript" src="js/app.js"></script>
+ </head>
+ <style>
+div {
+	color: white;
+}
+button {
+	color: black;
+	width: 100px;
+	height: 40px;
+}
+</style>
+ <body>
+  <div id="stars">
+    <div class="large"<img src="stars_large.png" alt="stars_large" width="526" height="262"></div>
+    <div class="medium"></div>
+    <div class="small"></div>
+</div>
+  <div class="tatoo_I"></div>
+  <div class="tatoo_II"></div>
+  <div class="planetFloor">
+<div id="wrapper">
+<h1>Star Wars Quiz</h1>
+<button name="reset" id="reset" class="reset">Reset</button>
+<button type="button" class="startQuiz" value="startQuiz">Start</button>
+<br />
+<form id="questions">
+</form>
+<br />
+<div class="subButton">
+<button type="button" class="submitButton" value="submitButton">Submit</button>
+</div>
+<br />
+<div class="nextButton">
+<button type="button" class="nextQuestion" value="nextQuestion">Next</button>
+</div>
+</div>
+    <footer>
+        <p id="progress">Question 0 of 10</p>
+    </footer>
+    </div>
+</div>
+<!--   <div class="planetFloor"><img src="images/planet_floor.png" alt="planet_floor" width="2880" height="705"></div> -->
+ 
+
+
+
+
+
+
+<!--
+
+The minimum requirements are as follows:
+
+The app must lead the user through a set of questions. The user should only see one question at a time, with new answers presented only after they have answered the current one.
+
+Users should be able to input their answer to each question, with radio buttons or some other appropriate interface.
+When the user answers the last question, the app should show his or her overall score.
+
+Each question should be stored as a JavaScript object, and you’ll probably want to store your list of questions in an array.
+
+If you are feeling particularly ambitious, consider implementing the following features:
+
+Let the user know where in the quiz they are at each step (i.e. “Question 3 of 5")
+
+Let the user know their score so far
+
+Let the user know if their previous response was correct
+
+-->
+ </body>
+</html>
