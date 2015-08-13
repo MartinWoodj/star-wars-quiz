@@ -19,7 +19,7 @@ $(document).ready(function() {
 	questions[3] = new Questions("Who fought Obi-Wan Kenobi in Star Wars III?", "Mace Windu", "Anakin Skywalker", "Leia Ogana", "Ben Kenobi", "a2");
 	questions[4] = new Questions("Who was Darth Vader?", "Luke Skywalker", "Anakin Skywalker", "Count Dooku", "Jacen Solo", "a2");
 	questions[5] = new Questions("Who killed Darth Sidious?", "Darth Vader", "Mace Windu", "Luke Skywalker", "Yoda", "a1");	
-	questions[6] = new Questions("What color wasn't used with a lightsaber?", "Blue", "Red", "Purple", "Green", "Pink", "a4");
+	questions[6] = new Questions("What color wasn't used with a lightsaber?", "Blue", "Red", "Purple", "Orange", "a4");
 	questions[7] = new Questions("Who was the New Hope", "Ben Kenobi", "Yoda", "Han Solo", "Luke Skywalker", "a4");
 	questions[8] = new Questions("Who was Luke Skywalker's sibling?", "Yoda", "Leia Organa", "Han Solo", "Anakin Skywalker", "a2");
 	questions[9] = new Questions("Who was fluent in over 6 million languages?", "Chewbacca", "R2-D2", "C3-PO", "Yoda", "a3");
@@ -55,7 +55,8 @@ $(document).ready(function() {
 	$(".nextQuestion").click(function(){
 		console.log("NEXT BUTTON CLICKED!");
 		questionNumber = questionNumber + 1;
-		console.log(questionNumber);
+		document.getElementById('questions').innerHTML = questions[questionNumber].question + '<br/>' + '<input type="radio" name="quiz" value="a1" id="a1">' + questions[questionNumber].choice1 + '<br/>' + '<input type="radio" name="quiz" value="a2" id="a2">' + questions[questionNumber].choice2 + '<br/>' + '<input type="radio" name="quiz" value="a3" id="a3">' + questions[questionNumber].choice3 + '<br/>' + '<input type="radio" name="quiz" value="a4" id="a4">' + questions[questionNumber].choice4 + '<br/>';
+		console.log(questions[questionNumber]);
 	});
 
 
