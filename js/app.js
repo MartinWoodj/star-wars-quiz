@@ -28,13 +28,14 @@ $(document).ready(function() {
 /*--- Clicking the Start button generates the first question ---*/
 	$(".startQuiz").click(function(){
 		console.log("START BUTTON CLICKED");
-		
+		$("#progress").html("Question 1 of 10")
 		
 /*--- Get each question from above and display it on the page with a radio button ---*/
 		document.getElementById('questions').innerHTML = questions[questionNumber].question + '<br/>' + '<input type="radio" name="quiz" value="a1" id="a1">' + questions[questionNumber].choice1 + '<br/>' + '<input type="radio" name="quiz" value="a2" id="a2">' + questions[questionNumber].choice2 + '<br/>' + '<input type="radio" name="quiz" value="a3" id="a3">' + questions[questionNumber].choice3 + '<br/>' + '<input type="radio" name="quiz" value="a4" id="a4">' + questions[questionNumber].choice4 + '<br/>';
 	
 	
 	});
+	
 
 /*--- Console.log when a submit button is clicked ---*/
 	$(".submitButton").click(function(){
@@ -51,25 +52,26 @@ $(document).ready(function() {
 			
 	});
 
-
+/*--- Porceed to the next question when the next button is clicked ---*/
 	$(".nextQuestion").click(function(){
 		console.log("NEXT BUTTON CLICKED!");
 		questionNumber = questionNumber + 1;
 		document.getElementById('questions').innerHTML = questions[questionNumber].question + '<br/>' + '<input type="radio" name="quiz" value="a1" id="a1">' + questions[questionNumber].choice1 + '<br/>' + '<input type="radio" name="quiz" value="a2" id="a2">' + questions[questionNumber].choice2 + '<br/>' + '<input type="radio" name="quiz" value="a3" id="a3">' + questions[questionNumber].choice3 + '<br/>' + '<input type="radio" name="quiz" value="a4" id="a4">' + questions[questionNumber].choice4 + '<br/>';
 		console.log(questions[questionNumber]);
 	});
+	
+	var count = 1;
 
-
-		
-
+	$(".nextButton").click(function() {
+	    count++;
+	    $("#progress").html("Question "+count+" of 10");
+	});
 	
 /*--- Identify the correct answer radio button ---*/
 /*--- Compare the correct answer with answer chosen  ---*/
 });
 
-
 	
-		
 
 
 
