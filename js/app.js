@@ -9,6 +9,7 @@ $(document).ready(function() {
 	}
 	
 	var questionNumber = 0
+	var count = 1;
 
 /*--- These are all of the questions ---*/
 
@@ -55,20 +56,23 @@ $(document).ready(function() {
 /*--- Porceed to the next question when the next button is clicked ---*/
 	$(".nextQuestion").click(function(){
 		console.log("NEXT BUTTON CLICKED!");
+		count++;
+	    $("#progress").html("Question "+count+" of 10");
+	    console.log(questionNumber);
+	    if(questionNumber >= 9) {
+		   $("#questions").html("You have completed the quiz!") 
+		}
+		else {
 		questionNumber = questionNumber + 1;
 		document.getElementById('questions').innerHTML = questions[questionNumber].question + '<br/>' + '<input type="radio" name="quiz" value="a1" id="a1">' + questions[questionNumber].choice1 + '<br/>' + '<input type="radio" name="quiz" value="a2" id="a2">' + questions[questionNumber].choice2 + '<br/>' + '<input type="radio" name="quiz" value="a3" id="a3">' + questions[questionNumber].choice3 + '<br/>' + '<input type="radio" name="quiz" value="a4" id="a4">' + questions[questionNumber].choice4 + '<br/>';
 		console.log(questions[questionNumber]);
-	});
-	
-	var count = 1;
 
-	$(".nextButton").click(function() {
-	    count++;
-	    $("#progress").html("Question "+count+" of 10");
+		}
+	
 	});
 	
-/*--- Identify the correct answer radio button ---*/
-/*--- Compare the correct answer with answer chosen  ---*/
+	
+
 });
 
 	
