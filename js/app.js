@@ -9,7 +9,9 @@ $(document).ready(function() {
 	}
 	
 	var questionNumber = 0
-	var count = 1;
+	var score = 0; //Begin with no score
+	var guessCount = 0; //Begin with no user guesses
+
 
 /*--- These are all of the questions ---*/
 
@@ -26,17 +28,17 @@ $(document).ready(function() {
 	questions[9] = new Questions("Who was fluent in over 6 million languages?", "Chewbacca", "R2-D2", "C3-PO", "Yoda", "a3");
 
 		
-/*--- Clicking the Start button generates the first question ---*/
+/*--- Clicking the Start button generates the first question ---*/	
 	$(".startQuiz").click(function(){
-		console.log("START BUTTON CLICKED");
-		$("#progress").html("Question 1 of 10")
-		
-/*--- Get each question from above and display it on the page with a radio button ---*/
-		document.getElementById('questions').innerHTML = questions[questionNumber].question + '<br/>' + '<input type="radio" name="quiz" value="a1" id="a1">' + questions[questionNumber].choice1 + '<br/>' + '<input type="radio" name="quiz" value="a2" id="a2">' + questions[questionNumber].choice2 + '<br/>' + '<input type="radio" name="quiz" value="a3" id="a3">' + questions[questionNumber].choice3 + '<br/>' + '<input type="radio" name="quiz" value="a4" id="a4">' + questions[questionNumber].choice4 + '<br/>';
-	
-	
+		beginQuiz(questionNumber, questions);	
 	});
 	
+/*--- Clicking the Reset button starts quiz over again ---*/
+	$(".reset").click(function(){
+		questionNumber = 0;
+		beginQuiz(questionNumber, questions);
+	});
+
 
 /*--- Console.log when a submit button is clicked ---*/
 	$(".submitButton").click(function(){
@@ -46,21 +48,30 @@ $(document).ready(function() {
 				console.log(questions[questionNumber].correctAnswer)
 			if(userGuess == questions[questionNumber].correctAnswer){
 				console.log("You are correct!");
+				$('#userFeedback').text("Your answer is correct!");
+				score++;
+				guessCount++;
+				console.log("CURRENT SCORE IS " + score);
 			}
 			else {
 				console.log("This is not correct!");
-			}
+				$('#userFeedback').text("Your answer is not correct.");
+				guessCount++;
+				console.log("CURRENT GUESS IS " + guessCount);
+			};
 			
 	});
 
-/*--- Porceed to the next question when the next button is clicked ---*/
+/*--- Proceed to the next question when the next button is clicked ---*/
 	$(".nextQuestion").click(function(){
 		console.log("NEXT BUTTON CLICKED!");
-		count++;
-	    $("#progress").html("Question "+count+" of 10");
+	    $("#progress").html("Question "+guessCount+" of 10");
 	    console.log(questionNumber);
+	    var userRating = Math.round((score / guessCount) * 100);
 	    if(questionNumber >= 9) {
-		   $("#questions").html("You have completed the quiz!") 
+		   $("#questions").html("You have completed the quiz!");
+/*--- When quiz ends display the quiz results ---*/
+		   $('#userFeedback').text("Your score is %"+userRating); 
 		}
 		else {
 		questionNumber = questionNumber + 1;
@@ -68,23 +79,16 @@ $(document).ready(function() {
 		console.log(questions[questionNumber]);
 
 		}
-	
+		
 	});
 	
-	
-
 });
 
-	
+function beginQuiz(questionNumber, questions){
+	console.log("START BUTTON CLICKED");
+	$("#progress").html("Question 1 of 10")
+		
+/*--- Get each question from above and display it on the page with a radio button ---*/
+		document.getElementById('questions').innerHTML = questions[questionNumber].question + '<br/>' + '<input type="radio" name="quiz" value="a1" id="a1">' + questions[questionNumber].choice1 + '<br/>' + '<input type="radio" name="quiz" value="a2" id="a2">' + questions[questionNumber].choice2 + '<br/>' + '<input type="radio" name="quiz" value="a3" id="a3">' + questions[questionNumber].choice3 + '<br/>' + '<input type="radio" name="quiz" value="a4" id="a4">' + questions[questionNumber].choice4 + '<br/>';
 
-
-
-
-
-
-
-
-
-
-
-
+}
